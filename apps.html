@@ -1,15 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps | Jezreel Ramos</title>
     <link rel="stylesheet" href="style.css">
     <style>
         /* Specific styles for apps page layout */
-        body { padding-top: 5rem; align-items: center; } 
-        nav { width: 100%; max-width: 500px; margin-bottom: 2rem; }
+        body { 
+            padding-top: 5rem; 
+            align-items: center; 
+        } 
+        
+        nav { 
+            width: 100%; 
+            max-width: 600px; 
+            margin-bottom: 2rem; 
+        }
+        
+        main {
+            width: 100%;
+            max-width: 600px; /* Slightly wider for better text readability */
+        }
+
+        /* App Card Styles */
+        .app-card {
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            border-radius: 20px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-button);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, 
+                background-color 0.3s ease, color 0.3s ease;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .app-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-button-hover);
+            border-color: var(--btn-border);
+            background-color: #dbdbd6;
+            color: var(--text-color);
+        }
+
+        [data-theme="dark"] .app-card:hover {
+            background-color: #1f2220;
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .app-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        /* Status badge (e.g., Available, In Development) */
+        .app-status {
+            font-size: 0.7rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Tech stack tags */
+        .app-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .app-tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--bg-accent);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            border: 1px solid var(--btn-border);
+            font-weight: 600;
+        }
+
+        .app-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.8rem;
+            text-align: justify;
+        }
+
+        /* Footer links (Privacy Policy, Support) */
+        .app-links {
+            display: flex;
+            gap: 1.5rem;
+            border-top: 1px solid var(--btn-border);
+            padding-top: 1.2rem;
+        }
+
+        .app-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: opacity 0.2s ease;
+        }
+
+        .app-links a:hover {
+            opacity: 0.6;
+            text-decoration: underline;
+        }
     </style>
 </head>
-<body> <button id="theme-toggle">🌗</button>
-    <nav><a href="index.html" style="color: var(--text-muted); text-decoration: none;">← Back</a></nav>
+<body> 
+    <button id="theme-toggle" aria-label="Toggle Theme">🌗</button>
+    
+    <nav>
+        <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">← Back to Home</a>
+    </nav>
+    
     <main>
-        <h1>Apps</h1>
+        <h1 style="text-align: left; margin-bottom: 2rem;">Apps</h1>
+        
+        <div class="app-card">
+            <div class="app-header">
+                <h2 class="app-title">Himnario Gracia</h2>
+                <span class="app-status">AVAILABLE NOW</span>
+            </div>
+            
+            <div class="app-tags">
+                <span class="app-tag">Flutter</span>
+                <span class="app-tag">iOS & Android</span>
+                <span class="app-tag">Offline</span>
+            </div>
+
+            <p class="app-desc">
+                Himnario Gracia es una aplicación móvil desarrollada en Flutter que funciona como un himnal digital interactivo. La app permite a los usuarios explorar, buscar y gestionar una extensa colección de himnos religiosos con una interfaz intuitiva y moderna. Cada himno incluye su letra completa y acordes musicales, facilitando tanto el canto como la práctica musical. La aplicación está diseñada para ser accesible en cualquier momento, permitiendo que los usuarios accedan a su biblioteca de himnos favoritos sin necesidad de conexión a internet.
+            </p>
+
+            <div class="app-links">
+                <a href="privacies/hymnal_privacy.html">Privacy Policy ↗</a>
+                <a href="mailto:jez85679@gmail.com">Support ↗</a>
+            </div>
+        </div>
+
         </main>
+    
     <script src="script.js"></script>
 </body>
+</html>
