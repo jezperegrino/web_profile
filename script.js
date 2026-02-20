@@ -21,3 +21,24 @@ if (toggleButton) {
         localStorage.setItem('theme', newTheme);
     });
 }
+
+// The words you want to cycle through
+const words = ["Flutter Apps", "ML Models", "Cloud Solutions", "Multiplatform Projects", "AI Innovations", "Agents & Tools", "Open Source Contributions", "Tech Insights", "Mobile Experiences", "Cutting-Edge Tech"];
+let currentWordIndex = 0;
+const rotatingTextElement = document.getElementById('rotating-text');
+
+// Only run if the element exists (prevents errors on other pages like apps.html)
+if (rotatingTextElement) {
+    // The interval duration (3000ms) MUST match the CSS animation duration (3s)
+    setInterval(() => {
+        // Move to the next word, loop back to 0 if at the end
+        currentWordIndex = (currentWordIndex + 1) % words.length;
+        
+        // Wait just a tiny bit (2.8s) so the text changes WHILE it is invisible (opacity: 0)
+        // based on the CSS keyframes, making the transition seamless.
+        setTimeout(() => {
+            rotatingTextElement.textContent = words[currentWordIndex];
+        }, 2800); 
+
+    }, 3000); 
+}
