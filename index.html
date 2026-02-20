@@ -1,48 +1,26 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jezreel Ramos</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="centered-layout">
 
-    <button id="theme-toggle" aria-label="Cambiar tema">🌗</button>
+    <button id="theme-toggle" aria-label="Toggle Theme">🌗</button>
 
     <main>
         <h1>Jezreel Ramos</h1>
-        <p class="subtitle">iOS & Android Developer</p>
+        <p class="subtitle">ML Engineer | Flutter Developer</p>
 
         <div class="nav-links">
-            <a href="#acerca">Acerca de mí (CV)</a>
-            <a href="#apps">Apps realizadas</a>
-            <a href="#blog">Blog</a>
+            <a href="cv.html">About Me</a>
+            <a href="apps.html">Apps</a>
+            <a href="blog.html">Blog</a>
         </div>
     </main>
 
-    <script>
-        // Lógica súper limpia para el Modo Oscuro/Claro
-        const toggleButton = document.getElementById('theme-toggle');
-        const htmlElement = document.documentElement;
-
-        // Iniciar con la preferencia guardada o la del sistema
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            htmlElement.setAttribute('data-theme', savedTheme);
-        } else {
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            htmlElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-        }
-
-        // Evento de clic para alternar
-        toggleButton.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            htmlElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
