@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantando con Gracia | Support & Info</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { padding-top: 3rem; align-items: center; } 
+        main { width: 100%; max-width: 700px; padding: 20px; }
+        
+        .hero-section { text-align: center; margin-bottom: 3rem; }
+        .app-icon-large { font-size: 4rem; margin-bottom: 1rem; }
+
+        .info-section {
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-button);
+        }
+
+        h2 { border-bottom: 1px solid var(--btn-border); padding-bottom: 0.5rem; margin-top: 0; }
+        .support-contact { background: var(--bg-accent); padding: 1.5rem; border-radius: 12px; text-align: center; }
+        .email-link { font-size: 1.2rem; font-weight: 700; color: var(--text-color); text-decoration: none; }
+        
+        .legal-box { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+        .faq-item { margin-bottom: 1rem; }
+        .faq-question { font-weight: 700; color: var(--text-color); display: block; }
+
+        nav { width: 100%; max-width: 700px; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <button id="theme-toggle" aria-label="Toggle Theme">🌗</button>
+    
+    <nav>
+        <a href="index.html" style="color: var(--text-muted); text-decoration: none;">← Back</a>
+    </nav>
+
+    <main>
+        <div class="hero-section">
+            <div class="app-icon-large">🎶</div>
+            <h1>Cantando con Gracia</h1>
+            <p>Your interactive digital hymnal for worship and music practice.</p>
+        </div>
+
+        <section class="info-section" id="support">
+            <h2>Customer Support</h2>
+            <p>Need help, found a bug, or have a suggestion? We are here to help you.</p>
+            <div class="support-contact">
+                <p>Contact us via email:</p>
+                <a href="mailto:jez85679@gmail.com" class="email-link">jez85679@gmail.com</a>
+                <p style="font-size: 0.8rem; margin-top: 10px;">Response time: Within 24-48 hours</p>
+            </div>
+            <div style="margin-top: 2rem;">
+                <h3>Frequently Asked Questions</h3>
+
+                <div class="faq-item">
+                    <span class="faq-question">Does the app work offline?</span>
+                    <p>Yes, all hymns and chords are stored locally on your device for offline use.</p>
+                </div>
+
+                <div class="faq-item">
+                    <span class="faq-question">Do I need to create an account to use the app?</span>
+                    <p>No, "Cantando con Gracia" does not require registration or any personal data. Your favorite lists are stored locally on your device to ensure maximum privacy.</p>
+                </div>
+
+                <div class="faq-item">
+                    <span class="faq-question">Where do the lyrics and chords come from?</span>
+                    <p>All lyrics are direct adaptations of biblical passages from the Reina Valera 1960 (RVR1960). We create the musical chords to accompany these scriptures, ensuring that all content is rooted in the Word of God and free for the community to use in worship.</p>
+                </div>
+
+                <div class="faq-item">
+                    <span class="faq-question">Can I adjust the text size for better readability?</span>
+                    <p>Yes, the app is designed to be accessible. It follows your device's system font settings and provides a clean, distraction-free interface for easy reading during service.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="info-section" id="legal">
+            <h2>Legal & Intellectual Property</h2>
+            <div class="legal-box">
+                <p><strong>Public Domain Notice:</strong></p>
+                <p><strong>Scripture-Based Content Notice:</strong></p>
+                <p>The lyrical content and musical scores (chords) provided in "Cantando con Gracia" are composed exclusively of musical adaptations of Biblical passages from the <strong>Reina Valera 1960 (RVR1960)</strong> version. These texts constitute Holy Scripture and are considered <strong>Public Domain</strong> for devotional and liturgical purposes.</p>
+                <p>Every song in this application is a direct transcription or adaptation of biblical verses, which are historical and religious texts free from modern third-party music copyrights.</p>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h2>Privacy</h2>
+            <p>We value your privacy. Read our full policy here:</p>
+            <a href="privacies/hymnal_privacy.html" style="color: var(--text-color); font-weight: bold;">View Privacy Policy ↗</a>
+        </section>
+    </main>
+
+    <script>
+        // Copia el mismo script de toggle que tienes en index o apps
+        const btn = document.getElementById('theme-toggle');
+        btn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+        });
+    </script>
+</body>
+</html>
