@@ -6,94 +6,589 @@
     <title>Cantando con Gracia | Support & Info</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        body { padding-top: 3rem; align-items: center; } 
-        main { width: 100%; max-width: 700px; padding: 20px; }
-        
-        .hero-section { text-align: center; margin-bottom: 3rem; }
-        .app-icon-large { font-size: 4rem; margin-bottom: 1rem; }
+        body {
+            padding: 2.5rem 0 4rem;
+            align-items: center;
+        }
 
-        .info-section {
-            background: var(--btn-bg);
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.08), transparent 18%),
+                radial-gradient(circle at 82% 22%, rgba(255, 255, 255, 0.05), transparent 20%),
+                radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.04), transparent 28%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav,
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            width: 100%;
+            max-width: 1120px;
+            margin-bottom: 1.25rem;
+            padding: 0 1.25rem;
+        }
+
+        main {
+            width: 100%;
+            max-width: 1120px;
+            padding: 0 1.25rem;
+            background: none;
+            border: 0;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+
+        .hero-card,
+        .info-section,
+        .phone-frame,
+        .feature-card,
+        .mini-panel,
+        .support-contact,
+        .privacy-card {
+            background: color-mix(in srgb, var(--btn-bg) 88%, transparent);
             border: 1px solid var(--btn-border);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
             box-shadow: var(--shadow-button);
         }
 
-        h2 { border-bottom: 1px solid var(--btn-border); padding-bottom: 0.5rem; margin-top: 0; }
-        .support-contact { background: var(--bg-accent); padding: 1.5rem; border-radius: 12px; text-align: center; }
-        .email-link { font-size: 1.2rem; font-weight: 700; color: var(--text-color); text-decoration: none; }
-        
-        .legal-box { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
-        .faq-item { margin-bottom: 1rem; }
-        .faq-question { font-weight: 700; color: var(--text-color); display: block; }
+        [data-theme="dark"] .hero-card,
+        [data-theme="dark"] .info-section,
+        [data-theme="dark"] .phone-frame,
+        [data-theme="dark"] .feature-card,
+        [data-theme="dark"] .mini-panel,
+        [data-theme="dark"] .support-contact,
+        [data-theme="dark"] .privacy-card {
+            background: rgba(21, 23, 21, 0.82);
+        }
 
-        nav { width: 100%; max-width: 700px; margin-bottom: 1rem; }
+        .hero-card {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 2rem;
+            padding: 2.2rem;
+            border-radius: 30px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 45%);
+            pointer-events: none;
+        }
+
+        .hero-copy,
+        .hero-visual {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            background: var(--bg-accent);
+            border: 1px solid var(--btn-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero-copy h1 {
+            text-align: left;
+            font-size: clamp(2.8rem, 2rem + 2.4vw, 4.35rem);
+            line-height: 0.95;
+            margin-bottom: 1rem;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-lead {
+            font-size: 1.06rem;
+            line-height: 1.75;
+            color: var(--text-muted);
+            max-width: 58ch;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.6rem;
+        }
+
+        .cta,
+        .secondary-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.25rem;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 1px solid var(--btn-border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+
+        .cta {
+            background: var(--text-color);
+            color: var(--bg-color);
+            box-shadow: var(--shadow-button);
+        }
+
+        .cta:hover,
+        .secondary-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-button-hover);
+        }
+
+        .secondary-link {
+            background: var(--btn-bg);
+            color: var(--text-color);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .mini-panel {
+            border-radius: 18px;
+            padding: 1rem 1rem 0.95rem;
+        }
+
+        .mini-panel strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .mini-panel span {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.45;
+        }
+
+        .hero-visual {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .phone-frame {
+            border-radius: 32px;
+            padding: 0.9rem;
+            align-self: stretch;
+        }
+
+        .phone-frame img,
+        .feature-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 24px;
+            margin-bottom: 0.8rem;
+        }
+
+        .phone-frame img {
+            display: block;
+            width: 260px;
+            max-width: 90vw;
+            aspect-ratio: 260/520;
+            height: auto;
+            object-fit: cover;
+            border-radius: 24px;
+            margin: 0 auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+        }
+
+        .stacked-features {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .feature-card {
+            border-radius: 24px;
+            padding: 1.3rem 1.2rem 1.2rem 1.2rem;
+            margin-bottom: 0.7rem;
+            min-width: 0;
+            min-height: 0;
+            box-sizing: border-box;
+        }
+
+        .feature-card img {
+            aspect-ratio: 4 / 3;
+            margin-bottom: 1.1rem;
+            border-radius: 18px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.08rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.97rem;
+            line-height: 1.7;
+            margin-bottom: 0.2rem;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-section {
+            border-radius: 28px;
+            padding: 2rem;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 1rem;
+            margin-bottom: 1.4rem;
+            padding-bottom: 0.85rem;
+            border-bottom: 1px solid var(--btn-border);
+        }
+
+        .section-head h2 {
+            margin: 0;
+            border: 0;
+            padding: 0;
+            font-size: 1.35rem;
+        }
+
+        .section-kicker {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 0.95rem;
+        }
+
+        .faq-item {
+            padding: 1rem 1rem 0;
+            background: var(--bg-accent);
+            border: 1px solid var(--btn-border);
+            border-radius: 16px;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            color: var(--text-color);
+            display: block;
+            margin-bottom: 0.45rem;
+        }
+
+        .faq-item p,
+        .support-copy,
+        .legal-box p,
+        .privacy-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .support-contact {
+            border-radius: 22px;
+            padding: 1.4rem;
+            text-align: left;
+            margin-top: 1.1rem;
+        }
+
+        .support-label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .support-meta {
+            margin-top: 0.85rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .legal-box {
+            font-size: 0.95rem;
+        }
+
+        .legal-callout {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.8rem;
+            background: var(--bg-accent);
+            border: 1px solid var(--btn-border);
+            border-radius: 999px;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 0.88rem;
+        }
+
+        .privacy-card {
+            border-radius: 28px;
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .privacy-card h2 {
+            margin: 0;
+            font-size: 1.35rem;
+        }
+
+        .privacy-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            padding: 0.9rem 1.1rem;
+            border-radius: 14px;
+            border: 1px solid var(--btn-border);
+            background: var(--btn-bg);
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: var(--shadow-button);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .privacy-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-button-hover);
+        }
+
+        @media (max-width: 980px) {
+            .hero-card,
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                grid-template-columns: 1fr;
+            }
+
+            .phone-frame {
+                max-width: 380px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 720px) {
+            body {
+                padding-top: 1.5rem;
+            }
+
+            nav,
+            main {
+                padding: 0 1rem;
+            }
+
+            .hero-card,
+            .info-section,
+            .privacy-card {
+                padding: 1.35rem;
+                border-radius: 22px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-copy h1 {
+                font-size: 2.6rem;
+            }
+        }
     </style>
 </head>
 <body>
     <button id="theme-toggle" aria-label="Toggle Theme">🌗</button>
     
     <nav>
-        <a href="index.html" style="color: var(--text-muted); text-decoration: none;">← Back</a>
+        <a href="index.html">← Back</a>
     </nav>
 
     <main>
-        <div class="hero-section">
-            <div class="app-icon-large">🎶</div>
-            <h1>Cantando con Gracia</h1>
-            <p>Your interactive digital hymnal for worship and music practice.</p>
-        </div>
+        <section class="hero-card" aria-labelledby="app-title">
+            <div class="hero-copy">
+                <span class="eyebrow">Mobile Hymnal Experience</span>
+                <h1 id="app-title">Cantando con Gracia</h1>
+                <p class="hero-lead">
+                    A digital hymnal designed for worship, study, and music practice. Browse scripture-based songs,
+                    read clean lyrics, and follow chord progressions in a calm interface made for real church use.
+                </p>
 
-        <section class="info-section" id="support">
-            <h2>Customer Support</h2>
-            <p>Need help, found a bug, or have a suggestion? We are here to help you.</p>
-            <div class="support-contact">
-                <p>Contact us via email:</p>
-                <a href="mailto:jez85679@gmail.com" class="email-link">jez85679@gmail.com</a>
-                <p style="font-size: 0.8rem; margin-top: 10px;">Response time: Within 24-48 hours</p>
+                <div class="hero-actions">
+                    <a class="cta" href="https://play.google.com/store/apps/details?id=com.jezperegrino.cantandocongracia" target="_blank" rel="noopener">Open on Android ↗</a>
+                    <a class="secondary-link" href="privacies/hymnal_privacy.html">Privacy Policy</a>
+                    <a class="secondary-link" href="">iOS: Soon</a>
+                </div>
+
+                <div class="hero-stats" aria-label="App highlights">
+                    <div class="mini-panel">
+                        <strong>Offline ready</strong>
+                        <span>Use songs, lyrics, and chords without needing an internet connection.</span>
+                    </div>
+                    <div class="mini-panel">
+                        <strong>Scripture based</strong>
+                        <span>Content adapted from biblical passages for devotional and congregational use.</span>
+                    </div>
+                    <div class="mini-panel">
+                        <strong>Made for practice</strong>
+                        <span>Readable screens for musicians, singers, and worship teams.</span>
+                    </div>
+                </div>
             </div>
-            <div style="margin-top: 2rem;">
-                <h3>Frequently Asked Questions</h3>
 
-                <div class="faq-item">
-                    <span class="faq-question">Does the app work offline?</span>
-                    <p>Yes, all hymns and chords are stored locally on your device for offline use.</p>
+            <div class="hero-visual" aria-label="App previews">
+                <div class="phone-frame">
+                    <img src="assets/images/app_iphone.jpeg" alt="Main iPhone interface of Cantando con Gracia app">
                 </div>
 
-                <div class="faq-item">
-                    <span class="faq-question">Do I need to create an account to use the app?</span>
-                    <p>No, "Cantando con Gracia" does not require registration or any personal data. Your favorite lists are stored locally on your device to ensure maximum privacy.</p>
-                </div>
+                <div class="stacked-features">
+                    <article class="feature-card">
+                        <img src="assets/images/app_01.png" alt="Song view showing musical chords in Cantando con Gracia">
+                        <h3>Chord View</h3>
+                        <p>See the chords of each song clearly.</p>
+                    </article>
 
-                <div class="faq-item">
-                    <span class="faq-question">Where do the lyrics and chords come from?</span>
-                    <p>All lyrics are direct adaptations of biblical passages from the Reina Valera 1960 (RVR1960). We create the musical chords to accompany these scriptures, ensuring that all content is rooted in the Word of God and free for the community to use in worship.</p>
+                    <article class="feature-card">
+                        <img src="assets/images/app_02.png" alt="Lyrics view showing hymn text in Cantando con Gracia">
+                        <h3>Lyrics View</h3>
+                        <p>Read complete lyrics in an uncluttered layout.</p>
+                    </article>
                 </div>
-
-                <div class="faq-item">
-                    <span class="faq-question">Can I adjust the text size for better readability?</span>
-                    <p>Yes, the app is designed to be accessible. It follows your device's system font settings and provides a clean, distraction-free interface for easy reading during service.</p>
-                </div>
-
             </div>
+        </section>
+
+        <section class="section-grid">
+            <section class="info-section" id="support">
+                <div class="section-head">
+                    <div>
+                        <span class="section-kicker">Support</span>
+                        <h2>Help, feedback, and common questions</h2>
+                    </div>
+                </div>
+
+                <p class="support-copy">
+                    If you found a bug, have a suggestion, or need help using the app, you can reach out directly.
+                    The app is intentionally simple, so support should feel simple too.
+                </p>
+
+                <div class="support-contact">
+                    <span class="support-label">Email support</span>
+                    <a href="mailto:jezreel.ramos@peregrino.dev" class="email-link">jezreel.ramos@peregrino.dev ↗</a>
+                    <p class="support-meta">Typical response time: within 24 to 48 hours.</p>
+                </div>
+
+                <div class="section-head" style="margin-top: 1.6rem;">
+                    <div>
+                        <span class="section-kicker">FAQ</span>
+                        <h2>What people usually ask</h2>
+                    </div>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <span class="faq-question">Does the app work offline?</span>
+                        <p>Yes. Hymns, lyrics, and chords are available locally on the device so they can be used during service or practice without internet.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <span class="faq-question">Do I need an account?</span>
+                        <p>No. Cantando con Gracia does not require sign-up and does not ask for personal information to access the core experience.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <span class="faq-question">What do the screenshots show?</span>
+                        <p>The interface includes dedicated views for chord guidance and lyric reading so musicians and singers can focus on the same song in different ways.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <span class="faq-question">Can the app adapt to readability needs?</span>
+                        <p>Yes. It follows device typography behavior and keeps the layout uncluttered to make on-stage or rehearsal reading easier.</p>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="privacy-card">
+                <div>
+                    <span class="section-kicker">Privacy</span>
+                    <h2>Clear data handling</h2>
+                    <p>
+                        The app is built to be lightweight and privacy-conscious. If you want the full details about how information is handled, the full policy is available below.
+                    </p>
+                </div>
+                <a class="privacy-link" href="privacies/hymnal_privacy.html">View Privacy Policy ↗</a>
+            </aside>
         </section>
 
         <section class="info-section" id="legal">
-            <h2>Legal & Intellectual Property</h2>
-            <div class="legal-box">
-                <p><strong>Public Domain Notice:</strong></p>
-                <p><strong>Scripture-Based Content Notice:</strong></p>
-                <p>The lyrical content and musical scores (chords) provided in "Cantando con Gracia" are composed exclusively of musical adaptations of Biblical passages from the <strong>Reina Valera 1960 (RVR1960)</strong> version. These texts constitute Holy Scripture and are considered <strong>Public Domain</strong> for devotional and liturgical purposes.</p>
-                <p>Every song in this application is a direct transcription or adaptation of biblical verses, which are historical and religious texts free from modern third-party music copyrights.</p>
+            <div class="section-head">
+                <div>
+                    <span class="section-kicker">Legal</span>
+                    <h2>Intellectual property and scripture notice</h2>
+                </div>
             </div>
-        </section>
 
-        <section class="info-section">
-            <h2>Privacy</h2>
-            <p>We value your privacy. Read our full policy here:</p>
-            <a href="privacies/hymnal_privacy.html" style="color: var(--text-color); font-weight: bold;">View Privacy Policy ↗</a>
+            <div class="legal-box">
+                <span class="legal-callout">Public Domain Notice</span>
+                <p>
+                    The lyrical content and musical scores used in Cantando con Gracia are composed exclusively of musical adaptations of Biblical passages from the <strong>Reina Valera 1960 (RVR1960)</strong> version.
+                </p>
+                <p>
+                    These texts are presented as Holy Scripture for devotional and liturgical use and are considered <strong>public domain</strong> in that religious context. Every song in the application is based on direct transcription or adaptation of biblical verses rather than modern third-party copyrighted song catalogs.
+                </p>
+                <p>
+                    The purpose of the app is to support worship, practice, and scripture-centered singing with a respectful and accessible digital format.
+                </p>
+            </div>
         </section>
     </main>
 
