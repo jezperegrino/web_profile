@@ -324,6 +324,79 @@
             margin-top: 1.1rem;
         }
 
+        .support-ticket {
+            background: var(--bg-accent);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--btn-border);
+        }
+
+        .support-ticket h3 {
+            margin-top: 0;
+            margin-bottom: 0.4rem;
+            color: var(--text-color);
+            font-size: 1.08rem;
+        }
+
+        .support-ticket > p {
+            font-size: 0.92rem;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        .support-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .support-form label {
+            font-weight: 700;
+            font-size: 0.86rem;
+            color: var(--text-color);
+            letter-spacing: 0.01em;
+        }
+
+        .support-form input,
+        .support-form textarea {
+            padding: 0.72rem 0.78rem;
+            border-radius: 10px;
+            border: 1px solid var(--btn-border);
+            background: var(--btn-bg);
+            color: var(--text-color);
+            font-family: inherit;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+
+        .support-form input:focus,
+        .support-form textarea:focus {
+            border-color: var(--text-muted);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--text-color) 14%, transparent);
+        }
+
+        .support-form button {
+            margin-top: 0.3rem;
+            padding: 0.78rem 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--btn-border);
+            background: var(--text-color);
+            color: var(--bg-color);
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: var(--shadow-button);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+        }
+
+        .support-form button:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-button-hover);
+            opacity: 0.96;
+        }
+
         .support-label {
             display: block;
             color: var(--text-muted);
@@ -521,10 +594,28 @@
                     The app is intentionally simple, so support should feel simple too.
                 </p>
 
-                <div class="support-contact">
+                <!-- <div class="support-contact">
                     <span class="support-label">Email support</span>
                     <a href="mailto:jezreel.ramos@peregrino.dev" class="email-link">jezreel.ramos@peregrino.dev ↗</a>
                     <p class="support-meta">Typical response time: within 24 to 48 hours.</p>
+                </div> -->
+
+                <div class="support-contact support-ticket">
+                    <h3>Submit a Support Ticket</h3>
+                    <p>Fill out this form to request assistance, report bugs, or ask questions.</p>
+
+                    <form class="support-form" action="https://formsubmit.co/jezreel.ramos@peregrino.dev" method="POST">
+                        <input type="hidden" name="_subject" value="Support Request: Cantando con Gracia">
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <label for="email">Your Email:</label>
+                        <input type="email" name="email" required placeholder="name@example.com">
+
+                        <label for="message">How can we help you?</label>
+                        <textarea name="message" required rows="4" placeholder="Describe your issue here..."></textarea>
+
+                        <button type="submit">Send Support Message</button>
+                    </form>
                 </div>
 
                 <div class="section-head" style="margin-top: 1.6rem;">
