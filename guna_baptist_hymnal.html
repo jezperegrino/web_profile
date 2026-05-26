@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Namaked-Garda | Himnario Bautista Guna</title>
+	<meta name="description" content="Página oficial de Namaked-Garda, himnario bautista en idioma Guna de Panamá.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--cream: #FFF8ED;
+			--cream-strong: #F7EEDC;
+			--navy: #213E78;
+			--navy-strong: #182F5C;
+			--coral: #D35B3B;
+			--text: #333333;
+			--text-soft: #4A4A4A;
+			--card: #FFFDF9;
+			--border: #E8DCC8;
+			--shadow-soft: 0 12px 30px rgba(33, 62, 120, 0.10);
+			--shadow-card: 0 16px 32px rgba(33, 62, 120, 0.14);
+			--radius-lg: 24px;
+			--radius-md: 16px;
+			--radius-sm: 12px;
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: "Poppins", "Segoe UI", Tahoma, sans-serif;
+			color: var(--text);
+			background: radial-gradient(circle at 10% -10%, rgba(211, 91, 59, 0.13), transparent 34%),
+				radial-gradient(circle at 92% 5%, rgba(33, 62, 120, 0.12), transparent 30%),
+				var(--cream);
+			line-height: 1.65;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		.page {
+			width: min(1120px, 100% - 2.5rem);
+			margin: 0 auto;
+			padding: 2.2rem 0 3rem;
+		}
+
+		.hero {
+			display: grid;
+			grid-template-columns: 1.2fr 0.8fr;
+			gap: 2rem;
+			background: color-mix(in srgb, var(--card) 94%, white);
+			border: 1px solid var(--border);
+			border-radius: 32px;
+			box-shadow: var(--shadow-soft);
+			padding: 2.2rem;
+			margin-bottom: 1.5rem;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.hero::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(120deg, rgba(255, 255, 255, 0.0), rgba(33, 62, 120, 0.05));
+			pointer-events: none;
+		}
+
+		.hero-copy,
+		.hero-badges {
+			position: relative;
+			z-index: 1;
+		}
+
+		.eyebrow {
+			display: inline-block;
+			background: var(--cream-strong);
+			border: 1px solid var(--border);
+			border-radius: 999px;
+			color: var(--navy);
+			font-weight: 700;
+			font-size: 0.78rem;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			padding: 0.4rem 0.8rem;
+			margin-bottom: 1rem;
+		}
+
+		h1 {
+			color: var(--navy);
+			font-size: clamp(2rem, 1.3rem + 3vw, 3.6rem);
+			letter-spacing: -0.03em;
+			line-height: 0.95;
+			margin-bottom: 0.5rem;
+		}
+
+		.subtitle {
+			font-size: clamp(1rem, 0.85rem + 0.5vw, 1.22rem);
+			font-weight: 600;
+			color: var(--coral);
+			margin-bottom: 1rem;
+		}
+
+		.hero-copy p {
+			color: var(--text-soft);
+			max-width: 62ch;
+			margin-bottom: 1.4rem;
+		}
+
+		.cta-row {
+			display: flex;
+			gap: 0.8rem;
+			flex-wrap: wrap;
+			margin-bottom: 1.5rem;
+		}
+
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.4rem;
+			border-radius: 14px;
+			padding: 0.82rem 1.1rem;
+			font-weight: 700;
+			border: 1px solid transparent;
+			transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+		}
+
+		.btn-primary {
+			background: var(--navy);
+			color: var(--cream);
+			box-shadow: var(--shadow-card);
+		}
+
+		.btn-secondary {
+			background: var(--coral);
+			color: #fff;
+			box-shadow: 0 14px 26px rgba(211, 91, 59, 0.26);
+		}
+
+		.btn:hover {
+			transform: translateY(-2px);
+			filter: brightness(1.03);
+		}
+
+		.features {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 0.9rem;
+		}
+
+		.feature {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-md);
+			box-shadow: var(--shadow-soft);
+			padding: 1rem;
+		}
+
+		.feature strong {
+			display: block;
+			color: var(--navy);
+			margin-bottom: 0.3rem;
+			font-size: 0.95rem;
+		}
+
+		.feature span {
+			color: var(--text-soft);
+			font-size: 0.9rem;
+		}
+
+		.hero-badges {
+			display: grid;
+			gap: 0.85rem;
+			align-content: start;
+		}
+
+		.badge-card {
+			border-radius: var(--radius-md);
+			border: 1px solid var(--border);
+			background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(247, 238, 220, 0.9));
+			padding: 1rem;
+			box-shadow: var(--shadow-soft);
+		}
+
+		.badge-card h3 {
+			font-size: 0.92rem;
+			color: var(--navy);
+			margin-bottom: 0.25rem;
+		}
+
+		.badge-card p {
+			font-size: 0.86rem;
+			color: var(--text-soft);
+		}
+
+		.section {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-lg);
+			box-shadow: var(--shadow-soft);
+			padding: 1.8rem;
+			margin-top: 1.2rem;
+		}
+
+		.section-head {
+			margin-bottom: 1rem;
+		}
+
+		.section-kicker {
+			display: inline-block;
+			color: var(--coral);
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			font-weight: 700;
+			font-size: 0.75rem;
+			margin-bottom: 0.35rem;
+		}
+
+		.section h2 {
+			color: var(--navy);
+			font-size: clamp(1.3rem, 1.15rem + 0.7vw, 1.9rem);
+			margin-bottom: 0.25rem;
+		}
+
+		.section p {
+			color: var(--text-soft);
+		}
+
+		.shots {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1rem;
+			margin-top: 1rem;
+		}
+
+		.shot-card {
+			background: #fff;
+			border: 1px solid var(--border);
+			border-radius: 18px;
+			padding: 0.8rem;
+			box-shadow: var(--shadow-soft);
+		}
+
+		.shot-card img {
+			width: 100%;
+			aspect-ratio: 9 / 18;
+			object-fit: cover;
+			border-radius: 14px;
+			display: block;
+			margin-bottom: 0.7rem;
+			background: linear-gradient(145deg, #f8f2e7, #f1e7d3);
+		}
+
+		.shot-card h3 {
+			color: var(--navy);
+			font-size: 0.98rem;
+			margin-bottom: 0.2rem;
+		}
+
+		.shot-card p {
+			font-size: 0.88rem;
+		}
+
+		.support-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1rem;
+			margin-top: 1rem;
+		}
+
+		.support-info,
+		.support-form-wrap {
+			border: 1px solid var(--border);
+			border-radius: 18px;
+			background: #fff;
+			padding: 1rem;
+		}
+
+		.support-info p {
+			margin-bottom: 0.85rem;
+		}
+
+		.support-mail {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.35rem;
+			color: var(--navy);
+			font-weight: 700;
+		}
+
+		.support-form {
+			display: grid;
+			gap: 0.6rem;
+		}
+
+		.support-form label {
+			font-size: 0.86rem;
+			color: var(--text);
+			font-weight: 600;
+		}
+
+		.support-form input,
+		.support-form textarea {
+			width: 100%;
+			border: 1px solid var(--border);
+			background: var(--cream);
+			border-radius: 10px;
+			padding: 0.72rem 0.78rem;
+			font: inherit;
+			color: var(--text);
+		}
+
+		.support-form input:focus,
+		.support-form textarea:focus {
+			outline: none;
+			border-color: var(--navy);
+			box-shadow: 0 0 0 3px rgba(33, 62, 120, 0.14);
+		}
+
+		.support-form button {
+			border: 1px solid var(--navy);
+			background: var(--navy);
+			color: var(--cream);
+			border-radius: 12px;
+			padding: 0.8rem 1rem;
+			font-weight: 700;
+			cursor: pointer;
+			box-shadow: var(--shadow-soft);
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+			margin-top: 0.25rem;
+		}
+
+		.support-form button:hover {
+			transform: translateY(-1px);
+			box-shadow: var(--shadow-card);
+		}
+
+		.faq {
+			display: grid;
+			gap: 0.7rem;
+			margin-top: 1rem;
+		}
+
+		details {
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			background: #fff;
+			padding: 0.8rem 0.9rem;
+		}
+
+		summary {
+			cursor: pointer;
+			font-weight: 700;
+			color: var(--navy);
+		}
+
+		details p {
+			margin-top: 0.45rem;
+			color: var(--text-soft);
+		}
+
+		.legal {
+			background: var(--navy);
+			color: var(--cream);
+			border-radius: var(--radius-lg);
+			margin-top: 1.2rem;
+			padding: 1.7rem;
+			box-shadow: 0 18px 34px rgba(24, 47, 92, 0.34);
+		}
+
+		.legal h2 {
+			font-size: clamp(1.25rem, 1.05rem + 0.5vw, 1.7rem);
+			margin-bottom: 0.7rem;
+		}
+
+		.legal p {
+			font-size: 0.96rem;
+			line-height: 1.75;
+			color: #FFF8ED;
+			max-width: 96ch;
+		}
+
+		footer {
+			margin-top: 1.4rem;
+			text-align: center;
+			color: var(--text-soft);
+			font-size: 0.9rem;
+			padding-bottom: 0.5rem;
+		}
+
+		footer a {
+			color: var(--navy);
+			font-weight: 700;
+		}
+
+		@media (max-width: 1024px) {
+			.hero {
+				grid-template-columns: 1fr;
+			}
+
+			.shots,
+			.support-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		@media (max-width: 720px) {
+			.page {
+				width: min(1120px, 100% - 1.25rem);
+				padding-top: 1.1rem;
+			}
+
+			.hero,
+			.section,
+			.legal {
+				border-radius: 20px;
+				padding: 1.25rem;
+			}
+
+			.features {
+				grid-template-columns: 1fr;
+			}
+
+			.btn {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<header class="hero" id="inicio">
+			<div class="hero-copy">
+				<span class="eyebrow">Aplicación oficial</span>
+				<h1>NAMAKED-GARDA</h1>
+				<p class="subtitle">Himnario Bautista en idioma Guna de Panamá.</p>
+				<p>
+					Una herramienta digital diseñada para la adoración, el estudio y la práctica de la iglesia. Lleva contigo los cantos basados en las Escrituras, con una interfaz limpia, sin distracciones y diseñada para el uso real en la congregación.
+				</p>
+
+				<div class="cta-row" aria-label="Botones de descarga">
+					<a class="btn btn-primary" href="#" aria-label="Disponible en Android">Disponible en Android</a>
+					<a class="btn btn-secondary" href="#" aria-label="Próximamente en iOS">Próximamente en iOS</a>
+				</div>
+
+				<div class="features" aria-label="Características destacadas">
+					<article class="feature">
+						<strong>100% Offline</strong>
+						<span>Úsalo en la iglesia sin necesidad de internet.</span>
+					</article>
+					<article class="feature">
+						<strong>Idioma Guna</strong>
+						<span>Cantos fieles a la tradición y lengua de Guna Yala.</span>
+					</article>
+					<article class="feature">
+						<strong>Diseño Minimalista</strong>
+						<span>Fácil lectura para cantantes y directores de alabanza.</span>
+					</article>
+				</div>
+			</div>
+
+			<div class="hero-badges" aria-label="Resumen de valor">
+				<article class="badge-card">
+					<h3>Lectura clara</h3>
+					<p>Interfaz limpia para mantener la atención en la letra y el contenido bíblico.</p>
+				</article>
+				<article class="badge-card">
+					<h3>Uso congregacional</h3>
+					<p>Pensada para culto, ensayo, discipulado y estudio personal.</p>
+				</article>
+				<article class="badge-card">
+					<h3>Acceso rápido</h3>
+					<p>Navega canciones y recursos sin pasos innecesarios.</p>
+				</article>
+			</div>
+		</header>
+
+		<section class="section" id="screenshots">
+			<div class="section-head">
+				<span class="section-kicker">Interfaz de la app</span>
+				<h2>Capturas principales</h2>
+				<p>Vista previa del estilo de navegación y lectura dentro de Namaked-Garda.</p>
+			</div>
+			<div class="shots">
+				<article class="shot-card">
+					<img src="placeholder1.png" alt="Placeholder de la pantalla de letra clara">
+					<h3>Letra clara</h3>
+					<p>Tipografía legible para cantar y seguir el contenido con facilidad.</p>
+				</article>
+				<article class="shot-card">
+					<img src="placeholder2.png" alt="Placeholder de la pantalla de búsqueda rápida">
+					<h3>Búsqueda rápida</h3>
+					<p>Encuentra himnos por título o referencia en pocos segundos.</p>
+				</article>
+				<article class="shot-card">
+					<img src="placeholder3.png" alt="Placeholder de la pantalla de información detallada">
+					<h3>Información detallada</h3>
+					<p>Accede al contenido relevante de forma ordenada y sin distracciones.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="section" id="soporte">
+			<div class="section-head">
+				<span class="section-kicker">Soporte y ayuda</span>
+				<h2>Help, Feedback, and Common Questions</h2>
+				<p>¿Tuviste algún problema con la aplicación, tienes alguna sugerencia o necesitas asistencia? Estamos aquí para ayudarte.</p>
+			</div>
+
+			<div class="support-grid">
+				<article class="support-info">
+					<h3>Canal de contacto</h3>
+					<p>También puedes escribirnos directamente si prefieres soporte por correo:</p>
+					<a class="support-mail" href="mailto:soporte@ejemplo.com">Enviar un correo a Soporte ↗</a>
+				</article>
+
+				<article class="support-form-wrap">
+					<form class="support-form" action="mailto:soporte@ejemplo.com" method="post" enctype="text/plain">
+						<label for="nombre">Nombre</label>
+						<input id="nombre" name="nombre" type="text" required placeholder="Tu nombre completo">
+
+						<label for="correo">Correo</label>
+						<input id="correo" name="correo" type="email" required placeholder="nombre@correo.com">
+
+						<label for="mensaje">Mensaje</label>
+						<textarea id="mensaje" name="mensaje" rows="4" required placeholder="Cuéntanos tu duda o comentario"></textarea>
+
+						<button type="submit">Enviar</button>
+					</form>
+				</article>
+			</div>
+		</section>
+
+		<section class="section" id="faq">
+			<div class="section-head">
+				<span class="section-kicker">Preguntas frecuentes</span>
+				<h2>FAQ</h2>
+			</div>
+			<div class="faq">
+				<details>
+					<summary>¿Necesito internet para usar el himnario?</summary>
+					<p>No. Una vez descargada, todos los cantos están disponibles 100% offline.</p>
+				</details>
+				<details>
+					<summary>¿Tengo que crear una cuenta?</summary>
+					<p>No, Namaked-Garda no recopila tu información personal ni requiere registro.</p>
+				</details>
+				<details>
+					<summary>¿El contenido es gratuito?</summary>
+					<p>Sí, esta aplicación fue desarrollada para bendecir y facilitar la adoración en la comunidad Guna.</p>
+				</details>
+			</div>
+		</section>
+
+		<section class="legal" id="legal">
+			<h2>Legal & Intellectual Property</h2>
+			<p>
+				Todos los derechos del texto son reservados por: La Asociación Bautista de Kuna Yala, Panamá.
+				Esta aplicación digital está basada en la edición impresa de Namaked-Garda, producida originalmente en colaboración con Bardin & Marsee Publishing, LLC y Melcher Media, Inc. Los logotipos e iconos de la edición física son marcas comerciales de sus respectivos dueños, excepto el logotipo que pertenece a La Asociación Bautista de Kuna Yala.
+			</p>
+		</section>
+
+		<footer>
+			<p><a href="#">Política de Privacidad</a></p>
+			<p>© 2024 Himnario Bautista Guna</p>
+		</footer>
+	</div>
+</body>
+</html>
